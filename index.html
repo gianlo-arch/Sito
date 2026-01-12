@@ -6,6 +6,18 @@
     <title>Studio Alberti — Architectura Digitalis</title>
     <meta name="description" content="Dove la razionalità rinascimentale incontra il design contemporaneo. Proporzione, armonia, bellezza.">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Studio Alberti — Architectura Digitalis">
+    <meta property="og:description" content="La bellezza nasce dalla ragione. Design digitale basato sulla proporzione aurea.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="it_IT">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1A1917">
+
     <!-- Fonts: Classico + Geometrico -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,12 +26,61 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Loading screen -->
+    <div class="loading-screen" id="loader">
+        <svg class="loading-logo" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="45" class="loading-circle"/>
+            <rect x="15" y="15" width="70" height="70" class="loading-rect"/>
+            <text x="50" y="58" text-anchor="middle" font-family="Cormorant Garamond" font-size="24" class="loading-letter">A</text>
+        </svg>
+        <p class="loading-text">Proportio</p>
+    </div>
+
+    <!-- Pattern SVG nascosti per uso nei placeholder -->
+    <svg class="svg-defs" aria-hidden="true">
+        <defs>
+            <!-- Pattern griglia prospettica -->
+            <pattern id="pattern-grid" patternUnits="userSpaceOnUse" width="40" height="40">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
+            </pattern>
+
+            <!-- Pattern spirale aurea semplificata -->
+            <pattern id="pattern-golden" patternUnits="userSpaceOnUse" width="100" height="100">
+                <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <circle cx="50" cy="50" r="18.5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.15"/>
+                <circle cx="50" cy="50" r="11.5" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.1"/>
+            </pattern>
+
+            <!-- Pattern architettonico -->
+            <pattern id="pattern-arch" patternUnits="userSpaceOnUse" width="60" height="80">
+                <rect x="5" y="20" width="50" height="60" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <path d="M 5 20 Q 30 0 55 20" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.2"/>
+                <line x1="30" y1="0" x2="30" y2="80" stroke="currentColor" stroke-width="0.3" opacity="0.1"/>
+            </pattern>
+
+            <!-- Gradiente oro -->
+            <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#C4A35A"/>
+                <stop offset="50%" style="stop-color:#D4B87A"/>
+                <stop offset="100%" style="stop-color:#C4A35A"/>
+            </linearGradient>
+
+            <!-- Gradiente lapislazzuli -->
+            <linearGradient id="lapis-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#3D6491"/>
+                <stop offset="100%" style="stop-color:#2B4B6F"/>
+            </linearGradient>
+        </defs>
+    </svg>
+
     <!-- Griglia geometrica decorativa - come i tracciati regolatori -->
     <div class="geometric-grid" aria-hidden="true">
         <div class="grid-line vertical" style="--position: 38.2%"></div>
         <div class="grid-line vertical" style="--position: 61.8%"></div>
         <div class="grid-line horizontal" style="--position: 38.2%"></div>
         <div class="grid-line horizontal" style="--position: 61.8%"></div>
+        <div class="grid-line vertical subtle" style="--position: 23.6%"></div>
+        <div class="grid-line vertical subtle" style="--position: 76.4%"></div>
         <div class="golden-spiral"></div>
     </div>
 
@@ -48,22 +109,38 @@
 
     <!-- Hero: Il momento di contemplazione -->
     <header class="hero">
+        <!-- Decorazione angoli -->
+        <div class="hero-corner hero-corner-tl" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><path d="M0 100 L0 0 L100 0" fill="none" stroke="currentColor"/></svg>
+        </div>
+        <div class="hero-corner hero-corner-br" aria-hidden="true">
+            <svg viewBox="0 0 100 100"><path d="M100 0 L100 100 L0 100" fill="none" stroke="currentColor"/></svg>
+        </div>
+
         <div class="hero-content">
-            <p class="hero-superscript">Architectura · Proportio · Venustas</p>
+            <p class="hero-superscript">
+                <span class="typewriter">Architectura · Proportio · Venustas</span>
+            </p>
             <h1 class="hero-title">
-                <span class="title-line">La bellezza nasce</span>
-                <span class="title-line">dalla <em>ragione</em></span>
+                <span class="title-line animate-in">La bellezza nasce</span>
+                <span class="title-line animate-in delay-1">dalla <em>ragione</em></span>
             </h1>
-            <p class="hero-description">
+            <p class="hero-description animate-in delay-2">
                 Come insegnava il Maestro: la bellezza è l'armonia di tutte le parti,
                 congiunte con tale proporzione che nulla si possa aggiungere o togliere
                 senza renderla peggiore.
             </p>
-            <div class="hero-cta">
-                <a href="#opus" class="btn btn-primary">Contempla le opere</a>
+            <div class="hero-cta animate-in delay-3">
+                <a href="#opus" class="btn btn-primary">
+                    <span>Contempla le opere</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
                 <a href="#ratio" class="btn btn-secondary">Scopri il metodo</a>
             </div>
         </div>
+
         <div class="hero-ornament">
             <svg viewBox="0 0 400 400" class="golden-ratio-diagram">
                 <!-- Spirale aurea costruita geometricamente -->
@@ -72,11 +149,55 @@
                 <rect x="247" y="153" width="94" height="94" class="gr-rect" style="--delay: 2"/>
                 <rect x="306" y="153" width="58" height="58" class="gr-rect" style="--delay: 3"/>
                 <rect x="306" y="211" width="35" height="35" class="gr-rect" style="--delay: 4"/>
+                <rect x="285" y="211" width="21" height="21" class="gr-rect" style="--delay: 5"/>
+                <rect x="285" y="232" width="13" height="13" class="gr-rect" style="--delay: 6"/>
                 <path d="M 0 247 Q 0 0, 247 0 Q 400 0, 400 153 Q 400 247, 306 247 Q 247 247, 247 211 Q 247 188, 270 188"
                       class="gr-spiral" fill="none"/>
+                <!-- Punto focale -->
+                <circle cx="270" cy="211" r="4" class="gr-focus"/>
+            </svg>
+            <!-- Numero phi fluttuante -->
+            <div class="floating-phi">φ</div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="scroll-indicator">
+            <span>Scorri</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
             </svg>
         </div>
     </header>
+
+    <!-- Marquee decorativo -->
+    <div class="marquee-section" aria-hidden="true">
+        <div class="marquee-track">
+            <span class="marquee-item">Proportio</span>
+            <span class="marquee-dot">✦</span>
+            <span class="marquee-item">Harmonia</span>
+            <span class="marquee-dot">✦</span>
+            <span class="marquee-item">Venustas</span>
+            <span class="marquee-dot">✦</span>
+            <span class="marquee-item">Concinnitas</span>
+            <span class="marquee-dot">✦</span>
+            <span class="marquee-item">Numerus</span>
+            <span class="marquee-dot">✦</span>
+            <span class="marquee-item">Finitio</span>
+            <span class="marquee-dot">✦</span>
+            <span class="marquee-item">Proportio</span>
+            <span class="marquee-dot">✦</span>
+            <span class="marquee-item">Harmonia</span>
+            <span class="marquee-dot">✦</span>
+            <span class="marquee-item">Venustas</span>
+            <span class="marquee-dot">✦</span>
+            <span class="marquee-item">Concinnitas</span>
+            <span class="marquee-dot">✦</span>
+            <span class="marquee-item">Numerus</span>
+            <span class="marquee-dot">✦</span>
+            <span class="marquee-item">Finitio</span>
+            <span class="marquee-dot">✦</span>
+        </div>
+    </div>
 
     <!-- Sezione Opus: Le opere -->
     <section id="opus" class="section section-opus">
@@ -89,8 +210,21 @@
         <div class="opus-grid">
             <article class="opus-item opus-featured">
                 <div class="opus-image">
-                    <div class="image-placeholder" data-ratio="φ">
-                        <span class="placeholder-text">Palazzo della Ragione</span>
+                    <div class="image-placeholder pattern-perspective">
+                        <svg class="placeholder-pattern" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+                            <!-- Palazzo stilizzato -->
+                            <rect x="100" y="80" width="200" height="180" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <path d="M100 80 L200 20 L300 80" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <rect x="130" y="120" width="40" height="60" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                            <rect x="180" y="120" width="40" height="60" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                            <rect x="230" y="120" width="40" height="60" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                            <rect x="170" y="200" width="60" height="60" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                            <path d="M170 200 L200 170 L230 200" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                            <!-- Linee prospettiche -->
+                            <line x1="0" y1="300" x2="200" y2="150" stroke="currentColor" stroke-width="0.3" opacity="0.3"/>
+                            <line x1="400" y1="300" x2="200" y2="150" stroke="currentColor" stroke-width="0.3" opacity="0.3"/>
+                        </svg>
+                        <span class="placeholder-label">Palazzo della Ragione</span>
                     </div>
                 </div>
                 <div class="opus-content">
@@ -101,14 +235,28 @@
                         proporzioni matematiche e armonia visiva. Ogni pixel segue
                         la legge della sezione aurea.
                     </p>
-                    <a href="#" class="opus-link">Esplora l'opera →</a>
+                    <a href="#" class="opus-link">
+                        <span>Esplora l'opera</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
             </article>
 
             <article class="opus-item">
                 <div class="opus-image">
-                    <div class="image-placeholder" data-ratio="4:3">
-                        <span class="placeholder-text">Tempio dell'Interfaccia</span>
+                    <div class="image-placeholder pattern-circles">
+                        <svg class="placeholder-pattern" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+                            <!-- Cerchi concentrici (Vitruvio) -->
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <circle cx="100" cy="100" r="50" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                            <circle cx="100" cy="100" r="31" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                            <circle cx="100" cy="100" r="19" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                            <line x1="20" y1="100" x2="180" y2="100" stroke="currentColor" stroke-width="0.3"/>
+                            <line x1="100" y1="20" x2="100" y2="180" stroke="currentColor" stroke-width="0.3"/>
+                        </svg>
+                        <span class="placeholder-label">Tempio dell'Interfaccia</span>
                     </div>
                 </div>
                 <div class="opus-content">
@@ -122,8 +270,17 @@
 
             <article class="opus-item">
                 <div class="opus-image">
-                    <div class="image-placeholder" data-ratio="4:3">
-                        <span class="placeholder-text">Loggia dei Componenti</span>
+                    <div class="image-placeholder pattern-grid">
+                        <svg class="placeholder-pattern" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+                            <!-- Griglia modulare -->
+                            <rect x="20" y="20" width="70" height="70" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <rect x="110" y="20" width="70" height="70" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <rect x="20" y="110" width="70" height="70" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <rect x="110" y="110" width="70" height="70" fill="none" stroke="currentColor" stroke-width="1"/>
+                            <circle cx="55" cy="55" r="20" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                            <rect x="125" y="35" width="40" height="40" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                        </svg>
+                        <span class="placeholder-label">Loggia dei Componenti</span>
                     </div>
                 </div>
                 <div class="opus-content">
@@ -137,8 +294,17 @@
 
             <article class="opus-item">
                 <div class="opus-image">
-                    <div class="image-placeholder" data-ratio="4:3">
-                        <span class="placeholder-text">Scriptorium Typographicum</span>
+                    <div class="image-placeholder pattern-type">
+                        <svg class="placeholder-pattern" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+                            <!-- Tipografia/lettere -->
+                            <text x="30" y="80" font-family="Georgia, serif" font-size="60" fill="none" stroke="currentColor" stroke-width="1">Aa</text>
+                            <line x1="30" y1="100" x2="170" y2="100" stroke="currentColor" stroke-width="0.5"/>
+                            <line x1="30" y1="120" x2="150" y2="120" stroke="currentColor" stroke-width="0.3"/>
+                            <line x1="30" y1="135" x2="170" y2="135" stroke="currentColor" stroke-width="0.3"/>
+                            <line x1="30" y1="150" x2="130" y2="150" stroke="currentColor" stroke-width="0.3"/>
+                            <line x1="30" y1="165" x2="160" y2="165" stroke="currentColor" stroke-width="0.3"/>
+                        </svg>
+                        <span class="placeholder-label">Scriptorium Typographicum</span>
                     </div>
                 </div>
                 <div class="opus-content">
@@ -152,6 +318,28 @@
         </div>
     </section>
 
+    <!-- Sezione Numeri (nuova) -->
+    <section class="section section-numbers">
+        <div class="numbers-grid">
+            <div class="number-item">
+                <span class="number-value" data-target="1.618">1.618</span>
+                <span class="number-label">Proporzione Aurea</span>
+            </div>
+            <div class="number-item">
+                <span class="number-value" data-target="1452">1452</span>
+                <span class="number-label">Anno del De Re Aedificatoria</span>
+            </div>
+            <div class="number-item">
+                <span class="number-value" data-target="∞">∞</span>
+                <span class="number-label">Possibilità creative</span>
+            </div>
+            <div class="number-item">
+                <span class="number-value" data-target="1">1</span>
+                <span class="number-label">Principio unificante</span>
+            </div>
+        </div>
+    </section>
+
     <!-- Sezione Ratio: Il Metodo -->
     <section id="ratio" class="section section-ratio">
         <header class="section-header">
@@ -162,10 +350,13 @@
 
         <div class="ratio-content">
             <div class="ratio-principle">
-                <div class="principle-number">φ</div>
+                <div class="principle-number">
+                    <span class="phi-symbol">φ</span>
+                    <span class="phi-value">= 1.618033988749895...</span>
+                </div>
                 <h3 class="principle-title">La Proporzione Aurea</h3>
                 <p class="principle-text">
-                    1.618033988749895... Il numero che governa la spirale del nautilus,
+                    Il numero che governa la spirale del nautilus,
                     le falangi delle dita, i petali del girasole. Nel nostro design,
                     ogni margine, ogni spaziatura, ogni rapporto dimensionale
                     è figlio di φ.
@@ -173,34 +364,50 @@
                 <div class="principle-formula">
                     <code>a/b = (a+b)/a = φ ≈ 1.618</code>
                 </div>
+
+                <!-- Visualizzazione interattiva -->
+                <div class="phi-visualization">
+                    <div class="phi-bar">
+                        <div class="phi-segment phi-a">a</div>
+                        <div class="phi-segment phi-b">b</div>
+                    </div>
+                    <div class="phi-bar phi-bar-full">
+                        <div class="phi-segment phi-ab">a + b</div>
+                    </div>
+                </div>
             </div>
 
             <div class="ratio-principles-grid">
                 <div class="principle-card">
+                    <div class="card-glow"></div>
                     <svg class="principle-icon" viewBox="0 0 80 80">
                         <rect x="10" y="10" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         <line x1="10" y1="47" x2="70" y2="47" stroke="currentColor" stroke-width="0.5"/>
                         <line x1="47" y1="10" x2="47" y2="70" stroke="currentColor" stroke-width="0.5"/>
+                        <circle cx="47" cy="47" r="3" fill="currentColor" opacity="0.5"/>
                     </svg>
                     <h4>Concinnitas</h4>
                     <p>L'armonia delle parti. Ogni elemento esiste in relazione al tutto.</p>
                 </div>
 
                 <div class="principle-card">
+                    <div class="card-glow"></div>
                     <svg class="principle-icon" viewBox="0 0 80 80">
                         <circle cx="40" cy="40" r="30" fill="none" stroke="currentColor" stroke-width="1.5"/>
                         <circle cx="40" cy="40" r="18.5" fill="none" stroke="currentColor" stroke-width="0.5"/>
                         <circle cx="40" cy="40" r="11.5" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                        <circle cx="40" cy="40" r="7" fill="none" stroke="currentColor" stroke-width="0.5"/>
                     </svg>
                     <h4>Numerus</h4>
                     <p>Il numero governa. Scale modulari e griglie matematiche.</p>
                 </div>
 
                 <div class="principle-card">
+                    <div class="card-glow"></div>
                     <svg class="principle-icon" viewBox="0 0 80 80">
                         <line x1="10" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1.5"/>
-                        <line x1="25" y1="25" x2="55" y2="55" stroke="currentColor" stroke-width="0.5"/>
-                        <line x1="55" y1="25" x2="25" y2="55" stroke="currentColor" stroke-width="0.5"/>
+                        <line x1="40" y1="10" x2="40" y2="70" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="40" cy="40" r="20" fill="none" stroke="currentColor" stroke-width="0.5"/>
                     </svg>
                     <h4>Finitio</h4>
                     <p>Collocazione perfetta. Ogni cosa al suo posto, per necessità.</p>
@@ -211,6 +418,8 @@
 
     <!-- Sezione De Re: About -->
     <section id="de-re" class="section section-de-re">
+        <div class="de-re-bg-pattern" aria-hidden="true"></div>
+
         <header class="section-header">
             <span class="section-number">III</span>
             <h2 class="section-title">De Re Aedificatoria</h2>
@@ -219,12 +428,18 @@
 
         <div class="de-re-content">
             <blockquote class="alberti-quote">
+                <svg class="quote-mark quote-open" viewBox="0 0 24 24">
+                    <path d="M11 7v4.5c0 2.5-2 4.5-4.5 4.5H6c-1 0-2-.5-2.5-1.5-.3-.5-.5-1-.5-1.5v-1c0-2 1.5-3.5 3.5-3.5H8V7h3zm10 0v4.5c0 2.5-2 4.5-4.5 4.5H16c-1 0-2-.5-2.5-1.5-.3-.5-.5-1-.5-1.5v-1c0-2 1.5-3.5 3.5-3.5H18V7h3z" fill="currentColor"/>
+                </svg>
                 <p>
-                    "Io definirò la bellezza come l'armonia tra tutte le membra,
+                    Io definirò la bellezza come l'armonia tra tutte le membra,
                     nell'unità di cui fan parte, fondata sopra una legge precisa,
                     per modo che non si possa aggiungere o togliere o cambiare nulla
-                    se non in peggio."
+                    se non in peggio.
                 </p>
+                <svg class="quote-mark quote-close" viewBox="0 0 24 24">
+                    <path d="M13 17v-4.5c0-2.5 2-4.5 4.5-4.5H18c1 0 2 .5 2.5 1.5.3.5.5 1 .5 1.5v1c0 2-1.5 3.5-3.5 3.5H16v1.5h-3zm-10 0v-4.5C3 10 5 8 7.5 8H8c1 0 2 .5 2.5 1.5.3.5.5 1 .5 1.5v1c0 2-1.5 3.5-3.5 3.5H6V17H3z" fill="currentColor"/>
+                </svg>
                 <cite>— Leon Battista Alberti, De Re Aedificatoria, 1452</cite>
             </blockquote>
 
@@ -248,6 +463,22 @@
                     che tutto è al posto giusto.
                 </p>
             </div>
+
+            <!-- Timeline stilizzata -->
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span class="timeline-year">1404</span>
+                    <span class="timeline-event">Nasce Leon Battista Alberti</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">1452</span>
+                    <span class="timeline-event">De Re Aedificatoria</span>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-year">2025</span>
+                    <span class="timeline-event">Rinascita digitale</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -263,24 +494,37 @@
             <form class="contact-form" action="#" method="post">
                 <div class="form-group">
                     <label for="name">Nome</label>
-                    <input type="text" id="name" name="name" required autocomplete="name">
+                    <input type="text" id="name" name="name" required autocomplete="name" placeholder="Il tuo nome">
+                    <span class="input-line"></span>
                 </div>
 
                 <div class="form-group">
                     <label for="email">Posta Elettronica</label>
-                    <input type="email" id="email" name="email" required autocomplete="email">
+                    <input type="email" id="email" name="email" required autocomplete="email" placeholder="email@esempio.it">
+                    <span class="input-line"></span>
                 </div>
 
                 <div class="form-group form-group-full">
                     <label for="message">Messaggio</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <textarea id="message" name="message" rows="5" required placeholder="Descrivi il tuo progetto..."></textarea>
+                    <span class="input-line"></span>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Invia il messaggio</button>
+                <button type="submit" class="btn btn-primary btn-submit">
+                    <span class="btn-text">Invia il messaggio</span>
+                    <span class="btn-loading">Invio in corso...</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                    </svg>
+                </button>
             </form>
 
             <div class="contact-info">
                 <div class="info-block">
+                    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
                     <h4>Bottega</h4>
                     <address>
                         Via della Proporzione Aurea, 1.618<br>
@@ -288,8 +532,20 @@
                     </address>
                 </div>
                 <div class="info-block">
+                    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
                     <h4>Epistola</h4>
                     <a href="mailto:studio@alberti.it">studio@alberti.it</a>
+                </div>
+                <div class="info-block">
+                    <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <h4>Orario</h4>
+                    <p>Lun — Ven: 9:00 — 18:00</p>
                 </div>
             </div>
         </div>
@@ -314,6 +570,28 @@
                 <a href="#contactus">Contactus</a>
             </nav>
 
+            <div class="footer-social">
+                <a href="#" aria-label="Instagram" class="social-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="2" y="2" width="20" height="20" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="18" cy="6" r="1" fill="currentColor"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="LinkedIn" class="social-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="2" y="2" width="20" height="20" rx="2"/>
+                        <path d="M8 11v5M8 8v.01M12 16v-5c0-1 1-2 2-2s2 1 2 2v5"/>
+                    </svg>
+                </a>
+                <a href="#" aria-label="Behance" class="social-link">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="2" y="2" width="20" height="20" rx="2"/>
+                        <path d="M7 8h3c1 0 2 1 2 2s-1 2-2 2H7V8zM7 12h3.5c1 0 2 1 2 2s-1 2-2 2H7v-4zM15 10h4M17 8v8"/>
+                    </svg>
+                </a>
+            </div>
+
             <p class="footer-copy">
                 MMXXVI · Studio Alberti · Tutti i diritti riservati
             </p>
@@ -327,6 +605,13 @@
             </svg>
         </div>
     </footer>
+
+    <!-- Back to top -->
+    <button class="back-to-top" aria-label="Torna in cima">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
 
     <script src="script.js"></script>
 </body>

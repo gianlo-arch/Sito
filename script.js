@@ -17,6 +17,7 @@
     const PHI = 1.618033988749895;
 
     const elements = {
+        loader: document.getElementById('loader'),
         nav: document.querySelector('.nav'),
         navToggle: document.querySelector('.nav-toggle'),
         navLinks: document.querySelector('.nav-links'),
@@ -26,10 +27,33 @@
         principleCards: document.querySelectorAll('.principle-card'),
         heroContent: document.querySelector('.hero-content'),
         heroOrnament: document.querySelector('.hero-ornament'),
+        backToTop: document.querySelector('.back-to-top'),
+        numberValues: document.querySelectorAll('.number-value'),
     };
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // II. NAVIGAZIONE
+    // II. LOADING SCREEN
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    /**
+     * Nasconde la loading screen dopo il caricamento
+     */
+    function hideLoader() {
+        if (!elements.loader) return;
+
+        // Attendi che le animazioni SVG completino
+        setTimeout(() => {
+            elements.loader.classList.add('hidden');
+
+            // Rimuovi completamente dopo la transizione
+            setTimeout(() => {
+                elements.loader.remove();
+            }, 800);
+        }, 2000);
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // III. NAVIGAZIONE
     // ═══════════════════════════════════════════════════════════════════════════
 
     /**
@@ -40,9 +64,9 @@
         const threshold = 50;
 
         if (scrollY > threshold) {
-            elements.nav.classList.add('scrolled');
+            elements.nav?.classList.add('scrolled');
         } else {
-            elements.nav.classList.remove('scrolled');
+            elements.nav?.classList.remove('scrolled');
         }
     }
 
@@ -73,14 +97,14 @@
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // III. SMOOTH SCROLL
+    // IV. SMOOTH SCROLL
     // ═══════════════════════════════════════════════════════════════════════════
 
     /**
      * Scroll fluido verso le ancore
      */
     function handleSmoothScroll(e) {
-        const href = e.target.getAttribute('href');
+        const href = e.target.closest('a')?.getAttribute('href');
 
         if (href && href.startsWith('#') && href.length > 1) {
             const target = document.querySelector(href);
@@ -88,7 +112,7 @@
             if (target) {
                 e.preventDefault();
 
-                const navHeight = elements.nav.offsetHeight;
+                const navHeight = elements.nav?.offsetHeight || 0;
                 const targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight;
 
                 window.scrollTo({
@@ -100,7 +124,37 @@
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // IV. REVEAL ANIMATIONS (Intersection Observer)
+    // V. BACK TO TOP
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    /**
+     * Mostra/nasconde il pulsante back to top
+     */
+    function handleBackToTop() {
+        if (!elements.backToTop) return;
+
+        const scrollY = window.scrollY;
+        const threshold = window.innerHeight * 0.5;
+
+        if (scrollY > threshold) {
+            elements.backToTop.classList.add('visible');
+        } else {
+            elements.backToTop.classList.remove('visible');
+        }
+    }
+
+    /**
+     * Scroll verso l'alto
+     */
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // VI. REVEAL ANIMATIONS (Intersection Observer)
     // ═══════════════════════════════════════════════════════════════════════════
 
     /**
@@ -154,10 +208,74 @@
             principlesGrid.classList.add('reveal-stagger');
             observer.observe(principlesGrid);
         }
+
+        // Numbers grid con stagger
+        const numbersGrid = document.querySelector('.numbers-grid');
+        if (numbersGrid) {
+            numbersGrid.classList.add('reveal-stagger');
+            observer.observe(numbersGrid);
+        }
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // V. EFFETTI PARALLAX SOTTILI
+    // VII. NUMBER ANIMATION
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    /**
+     * Anima i numeri quando entrano in vista
+     */
+    function setupNumberAnimation() {
+        if (!elements.numberValues.length) return;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = el.dataset.target;
+
+                    // Se è un numero, animalo
+                    if (!isNaN(parseFloat(target))) {
+                        animateNumber(el, parseFloat(target));
+                    }
+
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        elements.numberValues.forEach(el => observer.observe(el));
+    }
+
+    /**
+     * Anima un numero da 0 al target
+     */
+    function animateNumber(el, target) {
+        const duration = 2000;
+        const startTime = performance.now();
+        const isDecimal = target % 1 !== 0;
+
+        function update(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Easing out expo
+            const easeProgress = 1 - Math.pow(2, -10 * progress);
+
+            const current = target * easeProgress;
+            el.textContent = isDecimal ? current.toFixed(3) : Math.round(current);
+
+            if (progress < 1) {
+                requestAnimationFrame(update);
+            } else {
+                el.textContent = isDecimal ? target.toFixed(3) : target;
+            }
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // VIII. EFFETTI PARALLAX SOTTILI
     // ═══════════════════════════════════════════════════════════════════════════
 
     /**
@@ -201,7 +319,7 @@
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // VI. CURSORE PERSONALIZZATO (Desktop only)
+    // IX. CURSORE PERSONALIZZATO (Desktop only)
     // ═══════════════════════════════════════════════════════════════════════════
 
     /**
@@ -222,7 +340,7 @@
             .custom-cursor {
                 position: fixed;
                 pointer-events: none;
-                z-index: 9999;
+                z-index: 9998;
                 mix-blend-mode: difference;
             }
             .cursor-dot {
@@ -248,7 +366,7 @@
                 border-width: 2px;
             }
             body { cursor: none; }
-            a, button { cursor: none; }
+            a, button, .opus-item { cursor: none; }
         `;
         document.head.appendChild(style);
 
@@ -274,7 +392,7 @@
         animateCursor();
 
         // Hover effects
-        const interactiveElements = document.querySelectorAll('a, button, .opus-item');
+        const interactiveElements = document.querySelectorAll('a, button, .opus-item, .principle-card, .social-link');
         interactiveElements.forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
             el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
@@ -282,7 +400,7 @@
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // VII. FORM HANDLING
+    // X. FORM HANDLING
     // ═══════════════════════════════════════════════════════════════════════════
 
     /**
@@ -292,22 +410,25 @@
         e.preventDefault();
 
         const form = e.target;
-        const button = form.querySelector('button[type="submit"]');
-        const originalText = button.textContent;
+        const button = form.querySelector('.btn-submit');
+        if (!button) return;
 
-        // Animazione di invio
-        button.textContent = 'Invio in corso...';
+        // Aggiungi classe loading
+        button.classList.add('loading');
         button.disabled = true;
 
         // Simulazione invio (sostituire con vera logica)
         setTimeout(() => {
-            button.textContent = 'Messaggio inviato';
+            button.classList.remove('loading');
             button.style.backgroundColor = 'var(--color-verdigris)';
+
+            const btnText = button.querySelector('.btn-text');
+            if (btnText) btnText.textContent = 'Messaggio inviato!';
 
             // Reset dopo 3 secondi
             setTimeout(() => {
                 form.reset();
-                button.textContent = originalText;
+                if (btnText) btnText.textContent = 'Invia il messaggio';
                 button.disabled = false;
                 button.style.backgroundColor = '';
             }, 3000);
@@ -315,7 +436,7 @@
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // VIII. EASTER EGG — Omaggio ad Alberti
+    // XI. EASTER EGG — Omaggio ad Alberti
     // ═══════════════════════════════════════════════════════════════════════════
 
     /**
@@ -355,6 +476,7 @@
 
         overlay.innerHTML = `
             <div style="text-align: center; color: #FAF8F5; padding: 2rem; max-width: 600px;">
+                <div style="font-size: 4rem; color: #C4A35A; margin-bottom: 1rem;">φ</div>
                 <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; margin-bottom: 1rem;">
                     "Gli uomini possono fare tutto, se vogliono."
                 </p>
@@ -381,7 +503,31 @@
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // IX. THROTTLE & DEBOUNCE UTILITIES
+    // XII. MAGNETIC BUTTONS (subtle effect)
+    // ═══════════════════════════════════════════════════════════════════════════
+
+    function setupMagneticButtons() {
+        if (!window.matchMedia('(pointer: fine)').matches) return;
+
+        const buttons = document.querySelectorAll('.btn-primary');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+
+                btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+            });
+        });
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // XIII. THROTTLE & DEBOUNCE UTILITIES
     // ═══════════════════════════════════════════════════════════════════════════
 
     function throttle(func, limit) {
@@ -396,10 +542,13 @@
     }
 
     // ═══════════════════════════════════════════════════════════════════════════
-    // X. INIZIALIZZAZIONE
+    // XIV. INIZIALIZZAZIONE
     // ═══════════════════════════════════════════════════════════════════════════
 
     function init() {
+        // Loading screen
+        hideLoader();
+
         // Navigazione
         window.addEventListener('scroll', throttle(handleNavScroll, 10));
         elements.navToggle?.addEventListener('click', toggleMobileNav);
@@ -410,8 +559,15 @@
             anchor.addEventListener('click', handleSmoothScroll);
         });
 
+        // Back to top
+        window.addEventListener('scroll', throttle(handleBackToTop, 100));
+        elements.backToTop?.addEventListener('click', scrollToTop);
+
         // Reveal animations
         setupRevealAnimations();
+
+        // Number animations
+        setupNumberAnimation();
 
         // Parallax (solo desktop)
         if (window.matchMedia('(min-width: 768px)').matches) {
@@ -428,6 +584,9 @@
         // Cursore personalizzato (solo desktop con pointer preciso)
         createCustomCursor();
 
+        // Magnetic buttons
+        setupMagneticButtons();
+
         // Easter egg
         setupEasterEgg();
 
@@ -443,6 +602,10 @@
         console.log(
             '%cφ = ' + PHI,
             'font-family: monospace; color: #2B4B6F;'
+        );
+        console.log(
+            '%c↑↑↓↓←→←→BA per un segreto',
+            'font-family: monospace; font-size: 10px; color: #6B5D4A;'
         );
     }
 
