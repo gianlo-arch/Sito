@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Alberti — Architectura Digitalis</title>
+    <meta name="description" content="Dove la razionalità rinascimentale incontra il design contemporaneo. Proporzione, armonia, bellezza.">
+
+    <!-- Fonts: Classico + Geometrico -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Griglia geometrica decorativa - come i tracciati regolatori -->
+    <div class="geometric-grid" aria-hidden="true">
+        <div class="grid-line vertical" style="--position: 38.2%"></div>
+        <div class="grid-line vertical" style="--position: 61.8%"></div>
+        <div class="grid-line horizontal" style="--position: 38.2%"></div>
+        <div class="grid-line horizontal" style="--position: 61.8%"></div>
+        <div class="golden-spiral"></div>
+    </div>
+
+    <!-- Navigazione: semplicità e chiarezza -->
+    <nav class="nav" role="navigation">
+        <a href="#" class="nav-logo">
+            <svg class="logo-mark" viewBox="0 0 100 100" aria-label="Studio Alberti">
+                <!-- Vitruvian geometry: cerchio e quadrato -->
+                <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1"/>
+                <rect x="15" y="15" width="70" height="70" fill="none" stroke="currentColor" stroke-width="1"/>
+                <text x="50" y="58" text-anchor="middle" font-family="Cormorant Garamond" font-size="24" fill="currentColor">A</text>
+            </svg>
+            <span class="logo-text">Studio Alberti</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#opus">Opus</a></li>
+            <li><a href="#ratio">Ratio</a></li>
+            <li><a href="#de-re">De Re</a></li>
+            <li><a href="#contactus">Contactus</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero: Il momento di contemplazione -->
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-superscript">Architectura · Proportio · Venustas</p>
+            <h1 class="hero-title">
+                <span class="title-line">La bellezza nasce</span>
+                <span class="title-line">dalla <em>ragione</em></span>
+            </h1>
+            <p class="hero-description">
+                Come insegnava il Maestro: la bellezza è l'armonia di tutte le parti,
+                congiunte con tale proporzione che nulla si possa aggiungere o togliere
+                senza renderla peggiore.
+            </p>
+            <div class="hero-cta">
+                <a href="#opus" class="btn btn-primary">Contempla le opere</a>
+                <a href="#ratio" class="btn btn-secondary">Scopri il metodo</a>
+            </div>
+        </div>
+        <div class="hero-ornament">
+            <svg viewBox="0 0 400 400" class="golden-ratio-diagram">
+                <!-- Spirale aurea costruita geometricamente -->
+                <rect x="0" y="0" width="247" height="247" class="gr-rect" style="--delay: 0"/>
+                <rect x="247" y="0" width="153" height="153" class="gr-rect" style="--delay: 1"/>
+                <rect x="247" y="153" width="94" height="94" class="gr-rect" style="--delay: 2"/>
+                <rect x="306" y="153" width="58" height="58" class="gr-rect" style="--delay: 3"/>
+                <rect x="306" y="211" width="35" height="35" class="gr-rect" style="--delay: 4"/>
+                <path d="M 0 247 Q 0 0, 247 0 Q 400 0, 400 153 Q 400 247, 306 247 Q 247 247, 247 211 Q 247 188, 270 188"
+                      class="gr-spiral" fill="none"/>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Sezione Opus: Le opere -->
+    <section id="opus" class="section section-opus">
+        <header class="section-header">
+            <span class="section-number">I</span>
+            <h2 class="section-title">Opus</h2>
+            <p class="section-subtitle">Le opere parlano dove le parole tacciono</p>
+        </header>
+
+        <div class="opus-grid">
+            <article class="opus-item opus-featured">
+                <div class="opus-image">
+                    <div class="image-placeholder" data-ratio="φ">
+                        <span class="placeholder-text">Palazzo della Ragione</span>
+                    </div>
+                </div>
+                <div class="opus-content">
+                    <span class="opus-category">Architectura Digitalis</span>
+                    <h3 class="opus-title">Il Palazzo della Ragione</h3>
+                    <p class="opus-description">
+                        Un sistema di design che eleva l'esperienza digitale attraverso
+                        proporzioni matematiche e armonia visiva. Ogni pixel segue
+                        la legge della sezione aurea.
+                    </p>
+                    <a href="#" class="opus-link">Esplora l'opera →</a>
+                </div>
+            </article>
+
+            <article class="opus-item">
+                <div class="opus-image">
+                    <div class="image-placeholder" data-ratio="4:3">
+                        <span class="placeholder-text">Tempio dell'Interfaccia</span>
+                    </div>
+                </div>
+                <div class="opus-content">
+                    <span class="opus-category">Interface Design</span>
+                    <h3 class="opus-title">Tempio dell'Interfaccia</h3>
+                    <p class="opus-description">
+                        Dove l'utente diventa contemplatore, guidato dalla geometria sacra.
+                    </p>
+                </div>
+            </article>
+
+            <article class="opus-item">
+                <div class="opus-image">
+                    <div class="image-placeholder" data-ratio="4:3">
+                        <span class="placeholder-text">Loggia dei Componenti</span>
+                    </div>
+                </div>
+                <div class="opus-content">
+                    <span class="opus-category">Design System</span>
+                    <h3 class="opus-title">Loggia dei Componenti</h3>
+                    <p class="opus-description">
+                        Un portico di elementi riutilizzabili, ciascuno perfetto in sé.
+                    </p>
+                </div>
+            </article>
+
+            <article class="opus-item">
+                <div class="opus-image">
+                    <div class="image-placeholder" data-ratio="4:3">
+                        <span class="placeholder-text">Scriptorium Typographicum</span>
+                    </div>
+                </div>
+                <div class="opus-content">
+                    <span class="opus-category">Typography</span>
+                    <h3 class="opus-title">Scriptorium Typographicum</h3>
+                    <p class="opus-description">
+                        Scale tipografiche derivate dalla proporzione aurea.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Sezione Ratio: Il Metodo -->
+    <section id="ratio" class="section section-ratio">
+        <header class="section-header">
+            <span class="section-number">II</span>
+            <h2 class="section-title">Ratio</h2>
+            <p class="section-subtitle">Il metodo governa la bellezza</p>
+        </header>
+
+        <div class="ratio-content">
+            <div class="ratio-principle">
+                <div class="principle-number">φ</div>
+                <h3 class="principle-title">La Proporzione Aurea</h3>
+                <p class="principle-text">
+                    1.618033988749895... Il numero che governa la spirale del nautilus,
+                    le falangi delle dita, i petali del girasole. Nel nostro design,
+                    ogni margine, ogni spaziatura, ogni rapporto dimensionale
+                    è figlio di φ.
+                </p>
+                <div class="principle-formula">
+                    <code>a/b = (a+b)/a = φ ≈ 1.618</code>
+                </div>
+            </div>
+
+            <div class="ratio-principles-grid">
+                <div class="principle-card">
+                    <svg class="principle-icon" viewBox="0 0 80 80">
+                        <rect x="10" y="10" width="60" height="60" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                        <line x1="10" y1="47" x2="70" y2="47" stroke="currentColor" stroke-width="0.5"/>
+                        <line x1="47" y1="10" x2="47" y2="70" stroke="currentColor" stroke-width="0.5"/>
+                    </svg>
+                    <h4>Concinnitas</h4>
+                    <p>L'armonia delle parti. Ogni elemento esiste in relazione al tutto.</p>
+                </div>
+
+                <div class="principle-card">
+                    <svg class="principle-icon" viewBox="0 0 80 80">
+                        <circle cx="40" cy="40" r="30" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="40" cy="40" r="18.5" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                        <circle cx="40" cy="40" r="11.5" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                    </svg>
+                    <h4>Numerus</h4>
+                    <p>Il numero governa. Scale modulari e griglie matematiche.</p>
+                </div>
+
+                <div class="principle-card">
+                    <svg class="principle-icon" viewBox="0 0 80 80">
+                        <line x1="10" y1="40" x2="70" y2="40" stroke="currentColor" stroke-width="1.5"/>
+                        <line x1="25" y1="25" x2="55" y2="55" stroke="currentColor" stroke-width="0.5"/>
+                        <line x1="55" y1="25" x2="25" y2="55" stroke="currentColor" stroke-width="0.5"/>
+                    </svg>
+                    <h4>Finitio</h4>
+                    <p>Collocazione perfetta. Ogni cosa al suo posto, per necessità.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione De Re: About -->
+    <section id="de-re" class="section section-de-re">
+        <header class="section-header">
+            <span class="section-number">III</span>
+            <h2 class="section-title">De Re Aedificatoria</h2>
+            <p class="section-subtitle">Dell'arte del costruire nel digitale</p>
+        </header>
+
+        <div class="de-re-content">
+            <blockquote class="alberti-quote">
+                <p>
+                    "Io definirò la bellezza come l'armonia tra tutte le membra,
+                    nell'unità di cui fan parte, fondata sopra una legge precisa,
+                    per modo che non si possa aggiungere o togliere o cambiare nulla
+                    se non in peggio."
+                </p>
+                <cite>— Leon Battista Alberti, De Re Aedificatoria, 1452</cite>
+            </blockquote>
+
+            <div class="de-re-text">
+                <p>
+                    <span class="dropcap">S</span>e il Maestro vivesse oggi, vedrebbe nel web
+                    la naturale evoluzione dell'architettura. Non più pietra e malta,
+                    ma pixel e codice. Non più la statica del peso, ma il fluire
+                    dell'interazione. Eppure, le leggi rimangono immutate: proporzione,
+                    armonia, decoro.
+                </p>
+                <p>
+                    Lo Studio Alberti nasce da questa visione: applicare i principi
+                    rinascimentali al design digitale. Non per nostalgia, ma perché
+                    quei principi sono verità matematiche, e la verità non invecchia.
+                </p>
+                <p>
+                    Ogni progetto che creiamo è un tempio: ha le sue proporzioni sacre,
+                    la sua logica interna, la sua <em>venustas</em>. L'utente che lo abita
+                    non deve capire la matematica sottostante — deve solo sentire
+                    che tutto è al posto giusto.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sezione Contatto -->
+    <section id="contactus" class="section section-contact">
+        <header class="section-header">
+            <span class="section-number">IV</span>
+            <h2 class="section-title">Contactus</h2>
+            <p class="section-subtitle">Iniziamo un dialogo</p>
+        </header>
+
+        <div class="contact-content">
+            <form class="contact-form" action="#" method="post">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Posta Elettronica</label>
+                    <input type="email" id="email" name="email" required autocomplete="email">
+                </div>
+
+                <div class="form-group form-group-full">
+                    <label for="message">Messaggio</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Invia il messaggio</button>
+            </form>
+
+            <div class="contact-info">
+                <div class="info-block">
+                    <h4>Bottega</h4>
+                    <address>
+                        Via della Proporzione Aurea, 1.618<br>
+                        50123 Firenze, Italia
+                    </address>
+                </div>
+                <div class="info-block">
+                    <h4>Epistola</h4>
+                    <a href="mailto:studio@alberti.it">studio@alberti.it</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <svg class="footer-logo" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="1"/>
+                    <rect x="15" y="15" width="70" height="70" fill="none" stroke="currentColor" stroke-width="1"/>
+                    <text x="50" y="58" text-anchor="middle" font-family="Cormorant Garamond" font-size="24" fill="currentColor">A</text>
+                </svg>
+                <p class="footer-motto">Proportio · Harmonia · Venustas</p>
+            </div>
+
+            <nav class="footer-nav">
+                <a href="#opus">Opus</a>
+                <a href="#ratio">Ratio</a>
+                <a href="#de-re">De Re</a>
+                <a href="#contactus">Contactus</a>
+            </nav>
+
+            <p class="footer-copy">
+                MMXXVI · Studio Alberti · Tutti i diritti riservati
+            </p>
+        </div>
+
+        <div class="footer-ornament">
+            <svg viewBox="0 0 200 20" class="decorative-line">
+                <line x1="0" y1="10" x2="80" y2="10" stroke="currentColor" stroke-width="0.5"/>
+                <circle cx="100" cy="10" r="3" fill="currentColor"/>
+                <line x1="120" y1="10" x2="200" y2="10" stroke="currentColor" stroke-width="0.5"/>
+            </svg>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
