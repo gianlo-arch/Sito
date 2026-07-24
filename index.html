@@ -3,215 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De Re Aedificatoria Digitalis</title>
+    <title>Scopri Firenze — Guida Turistica</title>
+    <meta name="description" content="Guida turistica completa a Firenze: attrazioni, itinerari, cucina tipica, consigli pratici e gite fuori porta.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="golden-grid"></div>
 
-    <header class="hero">
-        <nav class="nav-minimal">
-            <div class="logo">LBA ∞</div>
-            <ul class="nav-links">
-                <li><a href="#proportio">Proportio</a></li>
-                <li><a href="#geometria">Geometria</a></li>
-                <li><a href="#opus">Opus</a></li>
+    <button class="back-to-top" id="backToTop" aria-label="Torna su">↑</button>
+
+    <header class="site-header" id="siteHeader">
+        <nav class="navbar">
+            <a href="#top" class="brand">Firenze<span class="brand-dot">.</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#attrazioni" class="nav-link">Attrazioni</a></li>
+                <li><a href="#itinerari" class="nav-link">Itinerari</a></li>
+                <li><a href="#cibo" class="nav-link">Cibo &amp; Vino</a></li>
+                <li><a href="#info-utili" class="nav-link">Info Utili</a></li>
+                <li><a href="#gite" class="nav-link">Gite fuori porta</a></li>
+                <li><a href="#mappa" class="nav-link">Mappa</a></li>
             </ul>
         </nav>
-
-        <div class="hero-content">
-            <h1 class="title-monumental">
-                <span class="line">Bellezza</span>
-                <span class="line">Razionale</span>
-            </h1>
-            <p class="subtitle-humanist">
-                Dove la proporzione aurea incontra il design contemporaneo
-            </p>
-            <div class="golden-ratio-visual">
-                <div class="rect phi-1"></div>
-                <div class="rect phi-2"></div>
-                <div class="rect phi-3"></div>
-                <div class="rect phi-4"></div>
-                <div class="spiral"></div>
-            </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <span class="scroll-text">Φ 1.618</span>
-            <div class="scroll-line"></div>
-        </div>
     </header>
 
-    <main>
-        <section id="proportio" class="section-philosophy">
-            <div class="container-golden">
-                <div class="content-block">
-                    <span class="section-number">I</span>
-                    <h2>La Divina Proporzione</h2>
-                    <p class="text-manifesto">
-                        "La bellezza è quell'armonia di tutte le parti, connesse insieme con tale proporzione e relazione,
-                        che nulla può essere aggiunto, diminuito o alterato, se non in peggio."
-                    </p>
-                    <p class="text-body">
-                        Nel codice come nell'architettura, la perfezione nasce dalla matematica.
-                        Ogni elemento risponde al rapporto φ (phi), la sezione aurea che governa
-                        dalla spirale delle galassie alla composizione di questo layout.
-                    </p>
-                </div>
-
-                <div class="interactive-golden">
-                    <div class="golden-rectangle">
-                        <div class="rectangle-a"></div>
-                        <div class="rectangle-b"></div>
-                        <div class="measurements">
-                            <span class="measure-a">a</span>
-                            <span class="measure-b">b</span>
-                            <span class="measure-formula">a/b = φ = 1.618...</span>
-                        </div>
-                    </div>
-                </div>
+    <main id="top">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-skyline" aria-hidden="true">
+                <svg viewBox="0 0 1200 260" preserveAspectRatio="none">
+                    <path d="M0,260 L0,180 L40,180 L40,150 L70,150 L70,180 L110,180 L110,120 L150,90 L190,120 L190,180
+                             L230,180 L230,140 L260,140 L260,180 L300,180 L300,60 L320,40 L340,60 L340,110
+                             C340,110 300,60 300,40 C300,20 340,0 360,20 C380,0 420,20 420,40 C420,60 380,110 380,110
+                             L400,180 L440,180 L440,150 L470,150 L470,180 L520,180 L520,100 L540,100 L540,60 L560,60
+                             L560,100 L580,100 L580,180 L630,180 L630,140 L660,140 L660,180 L700,180 L700,90
+                             C700,90 680,60 700,40 C720,20 760,20 780,40 C800,60 780,90 780,90 L800,180
+                             L850,180 L850,150 L880,150 L880,180 L930,180 L930,110 L950,110 L950,80 L970,80
+                             L970,110 L990,110 L990,180 L1040,180 L1040,140 L1070,140 L1070,180 L1200,180 L1200,260 Z"
+                          fill="currentColor"/>
+                </svg>
             </div>
+            <div class="hero-content">
+                <p class="hero-kicker">Toscana, Italia</p>
+                <h1 class="hero-title">Firenze</h1>
+                <p class="hero-subtitle">La culla del Rinascimento, dove ogni pietra racconta una storia d'arte.</p>
+                <div class="hero-actions">
+                    <a href="#attrazioni" class="btn btn-primary">Esplora le attrazioni</a>
+                    <a href="#itinerari" class="btn btn-outline">Vedi gli itinerari</a>
+                </div>
+                <dl class="hero-stats">
+                    <div><dt>1982</dt><dd>Patrimonio UNESCO</dd></div>
+                    <div><dt>4,5&nbsp;km²</dt><dd>Centro storico</dd></div>
+                    <div><dt>70+</dt><dd>Musei e gallerie</dd></div>
+                </dl>
+            </div>
+            <a href="#attrazioni" class="scroll-cue" aria-hidden="true"><span></span></a>
         </section>
 
-        <section id="geometria" class="section-geometry">
-            <div class="perspective-grid">
-                <div class="grid-lines"></div>
-            </div>
+        <!-- ATTRAZIONI -->
+        <section id="attrazioni" class="section">
+            <div class="container">
+                <p class="eyebrow">Da non perdere</p>
+                <h2 class="section-title">Attrazioni principali</h2>
+                <p class="section-lede">Gli otto luoghi che ogni visitatore dovrebbe vedere almeno una volta, con un consiglio pratico per ciascuno.</p>
 
-            <div class="container-golden">
-                <span class="section-number">II</span>
-                <h2>Geometria Sacra</h2>
-
-                <div class="shapes-container">
-                    <div class="shape-item" data-shape="circle">
-                        <div class="shape circle-perfect">
-                            <svg viewBox="0 0 200 200">
-                                <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="1"/>
-                                <circle cx="100" cy="100" r="2" fill="currentColor"/>
-                            </svg>
+                <div class="card-grid">
+                    <article class="card">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64"><path d="M32 4c14 0 24 12 24 24 0 6-2 11-6 15l-18 17-18-17c-4-4-6-9-6-15C8 16 18 4 32 4z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="32" cy="26" r="9" fill="none" stroke="currentColor" stroke-width="2"/></svg>
                         </div>
-                        <h3>Cerchio</h3>
-                        <p>Perfezione infinita</p>
-                    </div>
-
-                    <div class="shape-item" data-shape="square">
-                        <div class="shape square-perfect">
-                            <svg viewBox="0 0 200 200">
-                                <rect x="35" y="35" width="130" height="130" fill="none" stroke="currentColor" stroke-width="1"/>
-                                <line x1="35" y1="35" x2="165" y2="165" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                                <line x1="165" y1="35" x2="35" y2="165" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                            </svg>
-                        </div>
-                        <h3>Quadrato</h3>
-                        <p>Stabilità terrena</p>
-                    </div>
-
-                    <div class="shape-item" data-shape="triangle">
-                        <div class="shape triangle-perfect">
-                            <svg viewBox="0 0 200 200">
-                                <polygon points="100,30 170,165 30,165" fill="none" stroke="currentColor" stroke-width="1"/>
-                                <line x1="100" y1="30" x2="100" y2="165" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                            </svg>
-                        </div>
-                        <h3>Triangolo</h3>
-                        <p>Equilibrio divino</p>
-                    </div>
-
-                    <div class="shape-item" data-shape="pentagon">
-                        <div class="shape pentagon-perfect">
-                            <svg viewBox="0 0 200 200">
-                                <polygon points="100,30 175,85 145,160 55,160 25,85" fill="none" stroke="currentColor" stroke-width="1"/>
-                                <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                            </svg>
-                        </div>
-                        <h3>Pentagono</h3>
-                        <p>Sezione aurea incarnata</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="opus" class="section-work">
-            <div class="container-golden">
-                <span class="section-number">III</span>
-                <h2>Opus Digitalis</h2>
-
-                <div class="work-grid">
-                    <article class="work-card">
-                        <div class="work-image">
-                            <div class="placeholder-gradient gradient-1"></div>
-                        </div>
-                        <div class="work-content">
-                            <h3>Perspectiva Artificialis</h3>
-                            <p>Rendering tridimensionale secondo i principi brunelleschiani</p>
-                            <span class="work-tag">WebGL / Three.js</span>
-                        </div>
+                        <h3>Duomo di Santa Maria del Fiore</h3>
+                        <p>La celebre cupola del Brunelleschi domina lo skyline cittadino. Il complesso include anche Battistero e Campanile di Giotto.</p>
+                        <p class="card-tip"><strong>Consiglio:</strong> prenota online la salita alla cupola con largo anticipo: i posti sono limitati e a orario fisso.</p>
                     </article>
 
-                    <article class="work-card">
-                        <div class="work-image">
-                            <div class="placeholder-gradient gradient-2"></div>
+                    <article class="card">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64"><rect x="8" y="20" width="48" height="34" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 20 32 6l24 14" fill="none" stroke="currentColor" stroke-width="2"/><rect x="20" y="32" width="8" height="10" fill="none" stroke="currentColor" stroke-width="2"/><rect x="36" y="32" width="8" height="10" fill="none" stroke="currentColor" stroke-width="2"/></svg>
                         </div>
-                        <div class="work-content">
-                            <h3>Typographia Nova</h3>
-                            <p>Font variabili basati sui canoni rinascimentali</p>
-                            <span class="work-tag">Variable Fonts / WOFF2</span>
-                        </div>
+                        <h3>Galleria degli Uffizi</h3>
+                        <p>Uno dei musei più importanti al mondo: Botticelli, Leonardo, Michelangelo e Caravaggio in un unico percorso.</p>
+                        <p class="card-tip"><strong>Consiglio:</strong> biglietto con fascia oraria obbligatorio in alta stagione; arriva 15 minuti prima.</p>
                     </article>
 
-                    <article class="work-card">
-                        <div class="work-image">
-                            <div class="placeholder-gradient gradient-3"></div>
+                    <article class="card">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64"><path d="M6 40h52M6 40l6-8h40l6 8M16 40V26h4v14M44 40V26h4v14M24 40v-6h16v6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
                         </div>
-                        <div class="work-content">
-                            <h3>Harmonia Mundi</h3>
-                            <p>Generative art attraverso la sezione aurea</p>
-                            <span class="work-tag">Canvas API / Algorithm</span>
+                        <h3>Ponte Vecchio</h3>
+                        <p>Il ponte medievale con le botteghe orafe sospese sull'Arno, sopravvissuto ai bombardamenti della Seconda Guerra Mondiale.</p>
+                        <p class="card-tip"><strong>Consiglio:</strong> il tramonto visto dal Ponte Santa Trinita, un ponte più avanti, offre la vista migliore su di esso.</p>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64"><rect x="10" y="14" width="44" height="36" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10 24h44M22 24v26M42 24v26" fill="none" stroke="currentColor" stroke-width="2"/></svg>
                         </div>
+                        <h3>Palazzo Pitti &amp; Giardino di Boboli</h3>
+                        <p>Ex residenza dei Medici, oggi museo diffuso, con alle spalle uno dei giardini all'italiana più scenografici d'Europa.</p>
+                        <p class="card-tip"><strong>Consiglio:</strong> il biglietto cumulativo copre Boboli, giardino Bardini e museo degli Argenti.</p>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64"><path d="M32 6c-4 8-4 14 0 20 4-6 4-12 0-20z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 58c0-14 5-22 12-22s12 8 12 22" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                        </div>
+                        <h3>Galleria dell'Accademia</h3>
+                        <p>Qui vive il David di Michelangelo, uno dei capolavori assoluti della scultura occidentale.</p>
+                        <p class="card-tip"><strong>Consiglio:</strong> la coda è più corta nella tarda mattinata infrasettimanale; prenota comunque online.</p>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64"><circle cx="32" cy="26" r="14" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 58l12-24 12 24" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                        </div>
+                        <h3>Piazzale Michelangelo</h3>
+                        <p>Il belvedere gratuito più famoso della città: da qui l'intera Firenze si apre davanti a te, cupola compresa.</p>
+                        <p class="card-tip"><strong>Consiglio:</strong> arriva un'ora prima del tramonto per trovare posto e goderti la luce che cambia.</p>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64"><path d="M12 54V22l20-14 20 14v32z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M26 54V36h12v18" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                        </div>
+                        <h3>Basilica di Santa Croce</h3>
+                        <p>Il "Pantheon delle glorie italiane": qui riposano Michelangelo, Galileo, Machiavelli e Rossini.</p>
+                        <p class="card-tip"><strong>Consiglio:</strong> non perdere la Cappella dei Pazzi di Brunelleschi nel chiostro adiacente.</p>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64"><rect x="16" y="18" width="32" height="36" fill="none" stroke="currentColor" stroke-width="2"/><path d="M32 6v12M22 6h20" fill="none" stroke="currentColor" stroke-width="2"/><rect x="26" y="30" width="12" height="24" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+                        </div>
+                        <h3>Palazzo Vecchio</h3>
+                        <p>Il municipio-fortezza con la torre merlata che svetta su Piazza della Signoria, cuore politico della città dal Medioevo.</p>
+                        <p class="card-tip"><strong>Consiglio:</strong> la salita alla torre regala una vista alternativa (e meno affollata) rispetto alla cupola del Duomo.</p>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="section-manifesto">
-            <div class="container-narrow">
-                <blockquote class="quote-large">
-                    <p>
-                        "Se l'architettura è musica congelata,
-                        allora il codice è geometria animata.
-                        Ogni pixel risponde a una ragione,
-                        ogni transizione segue un'armonia matematica."
-                    </p>
-                    <footer>— Leon Battista Alberti, 2026</footer>
-                </blockquote>
+        <!-- ITINERARI -->
+        <section id="itinerari" class="section section-alt">
+            <div class="container">
+                <p class="eyebrow">Organizza il viaggio</p>
+                <h2 class="section-title">Itinerari consigliati</h2>
+                <p class="section-lede">Tre giorni tipo per vivere Firenze con calma, dal centro storico all'Oltrarno.</p>
+
+                <div class="tabs" id="itineraryTabs">
+                    <div class="tab-list" role="tablist">
+                        <button class="tab-btn active" data-tab="day1" role="tab" aria-selected="true">Giorno 1 — Centro storico</button>
+                        <button class="tab-btn" data-tab="day2" role="tab" aria-selected="false">Giorno 2 — Arte e Oltrarno</button>
+                        <button class="tab-btn" data-tab="day3" role="tab" aria-selected="false">Giorno 3 — Firenze insolita</button>
+                    </div>
+
+                    <div class="tab-panel active" data-panel="day1">
+                        <ol class="timeline">
+                            <li><span class="time">Mattina</span><div><strong>Duomo, Battistero e Campanile</strong><p>Inizia da Piazza del Duomo: sali sulla cupola o sul campanile per la prima vista panoramica della giornata.</p></div></li>
+                            <li><span class="time">Pranzo</span><div><strong>Mercato Centrale</strong><p>Street food di qualità in un mercato coperto ottocentesco, ideale per assaggiare più piatti tipici.</p></div></li>
+                            <li><span class="time">Pomeriggio</span><div><strong>Piazza della Signoria e Uffizi</strong><p>Passeggia tra le statue all'aperto di Loggia dei Lanzi, poi dedica almeno 2-3 ore alla Galleria degli Uffizi.</p></div></li>
+                            <li><span class="time">Sera</span><div><strong>Ponte Vecchio al tramonto</strong><p>Chiudi la giornata attraversando il ponte con la luce dorata, poi cena in una trattoria del centro.</p></div></li>
+                        </ol>
+                    </div>
+
+                    <div class="tab-panel" data-panel="day2">
+                        <ol class="timeline">
+                            <li><span class="time">Mattina</span><div><strong>Galleria dell'Accademia</strong><p>Vai presto per vedere il David senza folla, poi passeggia in San Marco e nel mercato di Sant'Ambrogio.</p></div></li>
+                            <li><span class="time">Pranzo</span><div><strong>Trattoria in Sant'Ambrogio</strong><p>Zona meno turistica, ottima per un pranzo genuino a prezzi onesti.</p></div></li>
+                            <li><span class="time">Pomeriggio</span><div><strong>Oltrarno: Palazzo Pitti e Boboli</strong><p>Attraversa l'Arno per l'Oltrarno, visita Palazzo Pitti e rilassati nel Giardino di Boboli.</p></div></li>
+                            <li><span class="time">Sera</span><div><strong>Aperitivo in Santo Spirito</strong><p>La piazza più autentica e "bohémien" della città, piena di bar e botteghe artigiane.</p></div></li>
+                        </ol>
+                    </div>
+
+                    <div class="tab-panel" data-panel="day3">
+                        <ol class="timeline">
+                            <li><span class="time">Mattina</span><div><strong>Santa Croce e il suo quartiere</strong><p>Visita la basilica, poi perditi tra le botteghe di cuoio e le vie meno battute intorno a Sant'Ambrogio.</p></div></li>
+                            <li><span class="time">Pranzo</span><div><strong>Lampredotto da un chiosco storico</strong><p>Il panino tipico fiorentino, da provare almeno una volta in piedi al banco.</p></div></li>
+                            <li><span class="time">Pomeriggio</span><div><strong>Giardino delle Rose e Piazzale Michelangelo</strong><p>Sali con calma verso il belvedere passando per il giardino delle rose, gratuito e panoramico.</p></div></li>
+                            <li><span class="time">Sera</span><div><strong>San Miniato al Monte</strong><p>Poco sopra il piazzale, questa basilica romanica offre forse il tramonto più suggestivo della città.</p></div></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CIBO E VINO -->
+        <section id="cibo" class="section">
+            <div class="container">
+                <p class="eyebrow">Sapori toscani</p>
+                <h2 class="section-title">Cibo &amp; Vino</h2>
+                <p class="section-lede">La cucina fiorentina è povera nei costi e ricca nei sapori: ecco cosa assaggiare assolutamente.</p>
+
+                <div class="food-grid">
+                    <div class="food-item"><h3>Bistecca alla Fiorentina</h3><p>Taglio di carne di Chianina cotta al sangue sulla griglia, servita al taglio per due o più persone.</p></div>
+                    <div class="food-item"><h3>Ribollita</h3><p>Zuppa contadina di pane raffermo, cavolo nero e fagioli, il comfort food invernale per eccellenza.</p></div>
+                    <div class="food-item"><h3>Lampredotto</h3><p>Il quarto stomaco del bovino cotto in umido, servito in un panino: lo street food fiorentino più iconico.</p></div>
+                    <div class="food-item"><h3>Pappa al Pomodoro</h3><p>Zuppa densa di pomodoro, pane e basilico, semplice e profumatissima d'estate.</p></div>
+                    <div class="food-item"><h3>Schiacciata</h3><p>Pane basso e croccante condito con olio extravergine e sale grosso, perfetto farcito per pranzo veloce.</p></div>
+                    <div class="food-item"><h3>Gelato artigianale</h3><p>Cerca i laboratori che espongono i gusti in vaschette coperte: è il primo segno di qualità artigianale.</p></div>
+                </div>
+
+                <div class="wine-note">
+                    <h3>Un brindisi con il Chianti</h3>
+                    <p>Le colline a sud di Firenze producono il Chianti Classico, riconoscibile dal gallo nero in etichetta. Molte enoteche del centro offrono degustazioni al calice senza bisogno di prenotazione.</p>
+                </div>
+
+                <p class="section-note">Per un assaggio veloce e vario, il <strong>Mercato Centrale</strong> e il <strong>Mercato di Sant'Ambrogio</strong> restano i posti migliori dove provare più piatti tipici in un solo posto.</p>
+            </div>
+        </section>
+
+        <!-- INFO UTILI -->
+        <section id="info-utili" class="section section-alt">
+            <div class="container">
+                <p class="eyebrow">Prima di partire</p>
+                <h2 class="section-title">Info utili</h2>
+
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>Quando andare</h3>
+                        <p>Aprile-maggio e settembre-ottobre offrono clima mite e meno folla rispetto all'estate. Luglio e agosto sono molto caldi e affollati; dicembre è suggestivo per i mercatini ma freddo.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Come muoversi</h3>
+                        <p>Il centro storico si visita interamente a piedi. Per l'Oltrarno o i belvedere più lontani puoi usare gli autobus ATAF; il centro è a traffico limitato (ZTL), quindi evita l'auto.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Biglietti e prenotazioni</h3>
+                        <p>Uffizi e Accademia vanno prenotati online con largo anticipo, soprattutto in alta stagione. La Firenze Card può convenire se prevedi di visitare molti musei in pochi giorni.</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Dove alloggiare</h3>
+                        <p>Il centro (San Giovanni, Santa Croce) è comodo per le attrazioni; l'Oltrarno è più tranquillo e autentico, con un'ottima scena food e artigianale.</p>
+                    </div>
+                </div>
+                <p class="section-note">Gli orari di apertura dei musei cambiano stagionalmente: verifica sempre il sito ufficiale dell'attrazione prima della visita.</p>
+            </div>
+        </section>
+
+        <!-- GITE FUORI PORTA -->
+        <section id="gite" class="section">
+            <div class="container">
+                <p class="eyebrow">Oltre la città</p>
+                <h2 class="section-title">Gite fuori porta</h2>
+                <p class="section-lede">La Toscana intorno a Firenze si esplora facilmente in giornata, in treno o in auto.</p>
+
+                <div class="trip-grid">
+                    <article class="trip-card">
+                        <h3>Siena</h3>
+                        <p class="trip-distance">~1h in treno o auto</p>
+                        <p>Piazza del Campo, il Duomo a righe bianche e nere e un centro medievale perfettamente conservato.</p>
+                    </article>
+                    <article class="trip-card">
+                        <h3>Pisa</h3>
+                        <p class="trip-distance">~1h in treno</p>
+                        <p>La Torre Pendente e Piazza dei Miracoli si visitano comodamente in una mezza giornata.</p>
+                    </article>
+                    <article class="trip-card">
+                        <h3>San Gimignano</h3>
+                        <p class="trip-distance">~1h15 in auto</p>
+                        <p>Il borgo delle torri medievali, immerso nelle colline della Val d'Elsa: ottimo anche per il gelato pluripremiato.</p>
+                    </article>
+                    <article class="trip-card">
+                        <h3>Chianti</h3>
+                        <p class="trip-distance">~30-45 min in auto</p>
+                        <p>Vigneti a perdita d'occhio tra Greve e Radda in Chianti, ideale per un giro di degustazioni in cantina.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAPPA -->
+        <section id="mappa" class="section section-alt">
+            <div class="container">
+                <p class="eyebrow">Orientati</p>
+                <h2 class="section-title">Mappa del centro</h2>
+                <div class="map-wrapper">
+                    <iframe
+                        title="Mappa di Firenze"
+                        src="https://maps.google.com/maps?q=Firenze%2C%20Italia&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer-minimal">
-        <div class="container-golden">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>De Architectura</h4>
-                    <p>Costruire con ragione,<br>progettare con bellezza.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Contactus</h4>
-                    <p>studio@alberti.digital<br>Firenze / Milano / Berlin</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Sequere Nos</h4>
-                    <div class="social-links">
-                        <a href="#">Github</a>
-                        <a href="#">Behance</a>
-                        <a href="#">Are.na</a>
-                    </div>
-                </div>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div>
+                <p class="brand footer-brand">Firenze<span class="brand-dot">.</span></p>
+                <p>Una guida turistica semplice per innamorarsi della città del Rinascimento.</p>
             </div>
-            <div class="footer-bottom">
-                <p>MMXXVI — Omnia Opera Sub Φ</p>
-            </div>
+            <nav class="footer-links" aria-label="Link rapidi">
+                <a href="#attrazioni">Attrazioni</a>
+                <a href="#itinerari">Itinerari</a>
+                <a href="#cibo">Cibo &amp; Vino</a>
+                <a href="#info-utili">Info Utili</a>
+                <a href="#gite">Gite fuori porta</a>
+            </nav>
         </div>
+        <p class="footer-bottom">Fatta con cura per chi ama viaggiare — Firenze, Toscana.</p>
     </footer>
 
     <script src="script.js"></script>
