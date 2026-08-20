@@ -3,214 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>De Re Aedificatoria Digitalis</title>
+    <title>PLISSÉ — Studio di Forma e Piega</title>
+    <meta name="description" content="PLISSÉ: moda come architettura. Griglia razionalista, proporzione aurea, colore pop, piega come struttura.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="golden-grid"></div>
+<body data-accent="red">
 
-    <header class="hero">
-        <nav class="nav-minimal">
-            <div class="logo">LBA ∞</div>
-            <ul class="nav-links">
-                <li><a href="#proportio">Proportio</a></li>
-                <li><a href="#geometria">Geometria</a></li>
-                <li><a href="#opus">Opus</a></li>
+    <!-- CURTAIN INTRO -->
+    <div class="curtain" id="curtain" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-ring"></span><span class="cursor-dot"></span></div>
+
+    <div class="grid-overlay" id="gridOverlay" aria-hidden="true"></div>
+    <div class="coord-hud" id="coordHud" aria-hidden="true">X 000 · Y 000 · MOD Ø</div>
+    <button class="grid-toggle" id="gridToggle" aria-pressed="false">Blueprint <span>M</span></button>
+    <button class="back-to-top" id="backToTop" aria-label="Torna su">↑</button>
+
+    <header class="site-header" id="siteHeader">
+        <nav class="navbar">
+            <a href="#top" class="brand">PLISSÉ<span class="brand-mark">°</span></a>
+            <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#manifesto" class="nav-link" data-num="I">Manifesto</a></li>
+                <li><a href="#griglia" class="nav-link" data-num="II">Griglia</a></li>
+                <li><a href="#collezione" class="nav-link" data-num="III">Collezione</a></li>
+                <li><a href="#studio" class="nav-link" data-num="IV">Studio</a></li>
+                <li><a href="#contatti" class="nav-link" data-num="V">Contatti</a></li>
             </ul>
         </nav>
-
-        <div class="hero-content">
-            <h1 class="title-monumental">
-                <span class="line">Bellezza</span>
-                <span class="line">Razionale</span>
-            </h1>
-            <p class="subtitle-humanist">
-                Dove la proporzione aurea incontra il design contemporaneo
-            </p>
-            <div class="golden-ratio-visual">
-                <div class="rect phi-1"></div>
-                <div class="rect phi-2"></div>
-                <div class="rect phi-3"></div>
-                <div class="rect phi-4"></div>
-                <div class="spiral"></div>
-            </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <span class="scroll-text">Φ 1.618</span>
-            <div class="scroll-line"></div>
-        </div>
     </header>
 
-    <main>
-        <section id="proportio" class="section-philosophy">
-            <div class="container-golden">
-                <div class="content-block">
-                    <span class="section-number">I</span>
-                    <h2>La Divina Proporzione</h2>
-                    <p class="text-manifesto">
-                        "La bellezza è quell'armonia di tutte le parti, connesse insieme con tale proporzione e relazione,
-                        che nulla può essere aggiunto, diminuito o alterato, se non in peggio."
-                    </p>
-                    <p class="text-body">
-                        Nel codice come nell'architettura, la perfezione nasce dalla matematica.
-                        Ogni elemento risponde al rapporto φ (phi), la sezione aurea che governa
-                        dalla spirale delle galassie alla composizione di questo layout.
-                    </p>
+    <main id="top">
+        <!-- HERO -->
+        <section class="hero">
+            <canvas id="pleatCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+            <div class="hero-modules" aria-hidden="true">
+                <span class="mod mod-1"></span>
+                <span class="mod mod-4"></span>
+                <span class="mod mod-6"></span>
+                <span class="mod mod-8"></span>
+            </div>
+            <div class="hero-content">
+                <p class="hero-kicker">Studio di forma e piega — Est. MMXXVI</p>
+                <h1 class="hero-title">PLISS<span class="hero-e">É</span></h1>
+                <p class="hero-subtitle">Dove la sezione aurea di Alberti incontra la griglia razionalista di Terragni. La piega come struttura, il colore come dichiarazione.</p>
+                <div class="hero-actions">
+                    <a href="#collezione" class="btn btn-solid magnetic">Vedi la collezione</a>
+                    <a href="#manifesto" class="btn btn-line magnetic">Leggi il manifesto</a>
+                </div>
+            </div>
+            <div class="hero-pleats" aria-hidden="true"></div>
+        </section>
+
+        <!-- MANIFESTO -->
+        <section id="manifesto" class="section">
+            <span class="seam" aria-hidden="true"></span>
+            <span class="watermark" aria-hidden="true">FORMA</span>
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-num">I</span>
+                    <h2 class="section-title">Manifesto</h2>
                 </div>
 
-                <div class="interactive-golden">
-                    <div class="golden-rectangle">
-                        <div class="rectangle-a"></div>
-                        <div class="rectangle-b"></div>
-                        <div class="measurements">
-                            <span class="measure-a">a</span>
-                            <span class="measure-b">b</span>
-                            <span class="measure-formula">a/b = φ = 1.618...</span>
+                <div class="manifesto-grid">
+                    <blockquote class="manifesto-quote">
+                        <p>Un abito è un edificio in movimento. Ha moduli, campate, una sezione che regge il peso del corpo come un pilastro regge una trave. La piega non decora: costruisce.</p>
+                        <footer>— Studio PLISSÉ, dichiarazione fondativa</footer>
+                    </blockquote>
+
+                    <div class="manifesto-text">
+                        <p>Il nostro riferimento non è la passerella, ma il cantiere. Da Leon Battista Alberti prendiamo la convinzione che la bellezza sia proporzione misurabile: ogni piega rispetta un rapporto, ogni cucitura risponde a φ = 1,618.</p>
+                        <p>Da Giuseppe Terragni prendiamo la griglia come atto politico e strutturale: la superficie del tessuto è una facciata razionalista, scandita in campate regolari, dove pieno e vuoto si alternano con la stessa disciplina della Casa del Fascio.</p>
+                        <p>Sopra questa struttura, il colore esplode: rosso, giallo, blu — la stessa energia pop che trasforma un'icona ripetuta in dichiarazione. Architettura rigorosa, superficie spudorata.</p>
+                    </div>
+                </div>
+
+                <div class="ratio-strip" aria-hidden="true">
+                    <span>1</span><span class="ratio-bar" style="--w:61.8%"></span><span>φ</span><span class="ratio-bar" style="--w:38.2%"></span><span>1/φ</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRIGLIA RAZIONALISTA -->
+        <section id="griglia" class="section section-dark">
+            <span class="seam" aria-hidden="true"></span>
+            <span class="watermark" aria-hidden="true">GRIGLIA</span>
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-num">II</span>
+                    <h2 class="section-title">Griglia Razionalista</h2>
+                </div>
+                <p class="section-lede">La facciata della Casa del Fascio come schema di taglio: campate regolari, moduli pieni e vuoti, proporzioni auree annotate come in un disegno d'architetto.</p>
+
+                <div class="facade-grid" id="facadeGrid">
+                    <!-- generated / annotated via JS -->
+                </div>
+
+                <p class="section-note">Ogni modulo colorato segue una progressione di Fibonacci: 1, 1, 2, 3, 5, 8 — la stessa sequenza che converge verso φ.</p>
+            </div>
+        </section>
+
+        <!-- COLLEZIONE -->
+        <section id="collezione" class="section">
+            <span class="seam" aria-hidden="true"></span>
+            <span class="watermark" aria-hidden="true">PIEGA</span>
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-num">III</span>
+                    <h2 class="section-title">Collezione</h2>
+                </div>
+                <p class="section-lede">Sei look, sei sistemi di piega. Tocca una scheda per aprire la distinta tecnica — il capo come disegno costruttivo.</p>
+
+                <div class="look-grid">
+
+                    <article class="look-card look-large" data-pleat="red" tabindex="0" role="button" aria-pressed="false" aria-label="Look I, Sezione Aurea: mostra scheda tecnica">
+                        <div class="look-card-inner">
+                            <div class="look-face look-face-front">
+                                <div class="look-swatch"><div class="pleat-tex"></div><div class="halftone"></div></div>
+                                <div class="look-info">
+                                    <span class="look-num">Look I</span>
+                                    <h3>Sezione Aurea</h3>
+                                    <p>Cappotto strutturato con piega a rapporto 1:1,618, taglio unico dritto sul filo.</p>
+                                    <span class="look-tag">Modulo A · Rosso Terragni</span>
+                                </div>
+                                <span class="flip-hint">Scheda tecnica ⤢</span>
+                            </div>
+                            <div class="look-face look-face-back">
+                                <svg viewBox="0 0 160 200" class="spec-svg">
+                                    <rect x="30" y="18" width="100" height="150" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M55 18 L65 30 L95 30 L105 18" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                    <line class="diagram-accent" x1="30" y1="90" x2="130" y2="90" stroke-width="1.5"/>
+                                    <line x1="18" y1="18" x2="18" y2="168" stroke="currentColor" stroke-width="1"/>
+                                    <line x1="14" y1="18" x2="22" y2="18" stroke="currentColor" stroke-width="1"/>
+                                    <line x1="14" y1="168" x2="22" y2="168" stroke="currentColor" stroke-width="1"/>
+                                    <text x="6" y="96" class="spec-text" transform="rotate(-90 10 96)">150 cm</text>
+                                    <text x="30" y="185" class="spec-text">1 : φ = 61.8 / 38.2</text>
+                                </svg>
+                                <p class="spec-line">Distinta tecnica · Modulo A · Rosso Terragni</p>
+                                <span class="flip-hint">← Torna al look</span>
+                            </div>
                         </div>
+                    </article>
+
+                    <article class="look-card" data-pleat="yellow" tabindex="0" role="button" aria-pressed="false" aria-label="Look II, Modulo Terragni: mostra scheda tecnica">
+                        <div class="look-card-inner">
+                            <div class="look-face look-face-front">
+                                <div class="look-swatch"><div class="pleat-tex"></div><div class="halftone"></div></div>
+                                <div class="look-info">
+                                    <span class="look-num">Look II</span>
+                                    <h3>Modulo Terragni</h3>
+                                    <p>Camicia a campate regolari, colletto come architrave.</p>
+                                    <span class="look-tag">Modulo B · Giallo Segnale</span>
+                                </div>
+                                <span class="flip-hint">Scheda tecnica ⤢</span>
+                            </div>
+                            <div class="look-face look-face-back">
+                                <svg viewBox="0 0 160 200" class="spec-svg">
+                                    <path d="M40 30 L60 18 L100 18 L120 30 L120 168 L40 168 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                    <line class="diagram-accent" x1="40" y1="60" x2="120" y2="60" stroke-width="1.5"/>
+                                    <line class="diagram-accent" x1="40" y1="90" x2="120" y2="90" stroke-width="1.5"/>
+                                    <line x1="40" y1="120" x2="120" y2="120" stroke="currentColor" stroke-width="1"/>
+                                    <text x="46" y="185" class="spec-text">Campate 30cm</text>
+                                </svg>
+                                <p class="spec-line">Distinta tecnica · Modulo B · Giallo Segnale</p>
+                                <span class="flip-hint">← Torna al look</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="look-card" data-pleat="blue" tabindex="0" role="button" aria-pressed="false" aria-label="Look III, Trama Razionale: mostra scheda tecnica">
+                        <div class="look-card-inner">
+                            <div class="look-face look-face-front">
+                                <div class="look-swatch"><div class="pleat-tex"></div><div class="halftone"></div></div>
+                                <div class="look-info">
+                                    <span class="look-num">Look III</span>
+                                    <h3>Trama Razionale</h3>
+                                    <p>Pantalone a pieghe verticali continue, come pilastri in facciata.</p>
+                                    <span class="look-tag">Modulo C · Blu Klein-Terragni</span>
+                                </div>
+                                <span class="flip-hint">Scheda tecnica ⤢</span>
+                            </div>
+                            <div class="look-face look-face-back">
+                                <svg viewBox="0 0 160 200" class="spec-svg">
+                                    <rect x="45" y="18" width="70" height="20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                    <line class="diagram-accent" x1="55" y1="38" x2="55" y2="168" stroke-width="1.5"/>
+                                    <line class="diagram-accent" x1="105" y1="38" x2="105" y2="168" stroke-width="1.5"/>
+                                    <line x1="55" y1="70" x2="105" y2="70" stroke="currentColor" stroke-width="1"/>
+                                    <line x1="55" y1="110" x2="105" y2="110" stroke="currentColor" stroke-width="1"/>
+                                    <text x="40" y="185" class="spec-text">Pilastri · 2 campate</text>
+                                </svg>
+                                <p class="spec-line">Distinta tecnica · Modulo C · Blu Klein-Terragni</p>
+                                <span class="flip-hint">← Torna al look</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="look-card" data-pleat="pink" tabindex="0" role="button" aria-pressed="false" aria-label="Look IV, Piega Infinita: mostra scheda tecnica">
+                        <div class="look-card-inner">
+                            <div class="look-face look-face-front">
+                                <div class="look-swatch"><div class="pleat-tex"></div><div class="halftone"></div></div>
+                                <div class="look-info">
+                                    <span class="look-num">Look IV</span>
+                                    <h3>Piega Infinita</h3>
+                                    <p>Abito plissé a spirale logaritmica, la piega segue la crescita di una conchiglia.</p>
+                                    <span class="look-tag">Modulo D · Magenta Pop</span>
+                                </div>
+                                <span class="flip-hint">Scheda tecnica ⤢</span>
+                            </div>
+                            <div class="look-face look-face-back">
+                                <svg viewBox="0 0 160 200" class="spec-svg">
+                                    <path d="M100 100 Q100 80 80 80 Q50 80 50 110 Q50 150 90 150 Q140 150 140 100 Q140 40 80 40"
+                                          class="diagram-accent" fill="none" stroke-width="1.5"/>
+                                    <path d="M30 20 L60 170 L110 170 L130 20" fill="none" stroke="currentColor" stroke-width="1"/>
+                                    <text x="34" y="188" class="spec-text">Spirale · r = φⁿ</text>
+                                </svg>
+                                <p class="spec-line">Distinta tecnica · Modulo D · Magenta Pop</p>
+                                <span class="flip-hint">← Torna al look</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="look-card" data-pleat="mono" tabindex="0" role="button" aria-pressed="false" aria-label="Look V, Bianco Travertino: mostra scheda tecnica">
+                        <div class="look-card-inner">
+                            <div class="look-face look-face-front">
+                                <div class="look-swatch"><div class="pleat-tex"></div><div class="halftone"></div></div>
+                                <div class="look-info">
+                                    <span class="look-num">Look V</span>
+                                    <h3>Bianco Travertino</h3>
+                                    <p>Total look monocromo, superficie liscia come una lastra di rivestimento.</p>
+                                    <span class="look-tag">Modulo E · Bianco/Nero</span>
+                                </div>
+                                <span class="flip-hint">Scheda tecnica ⤢</span>
+                            </div>
+                            <div class="look-face look-face-back">
+                                <svg viewBox="0 0 160 200" class="spec-svg">
+                                    <rect x="35" y="18" width="90" height="60" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                    <line class="diagram-accent" x1="35" y1="90" x2="125" y2="90" stroke-width="1.5" stroke-dasharray="4 4"/>
+                                    <rect x="35" y="98" width="90" height="70" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                    <text x="52" y="188" class="spec-text">B / N · 50 / 50</text>
+                                </svg>
+                                <p class="spec-line">Distinta tecnica · Modulo E · Bianco/Nero</p>
+                                <span class="flip-hint">← Torna al look</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="look-card" data-pleat="multi" tabindex="0" role="button" aria-pressed="false" aria-label="Look VI, Grafia Pop: mostra scheda tecnica">
+                        <div class="look-card-inner">
+                            <div class="look-face look-face-front">
+                                <div class="look-swatch"><div class="pleat-tex"></div><div class="halftone"></div></div>
+                                <div class="look-info">
+                                    <span class="look-num">Look VI</span>
+                                    <h3>Grafia Pop</h3>
+                                    <p>Stampa a retino serigrafico su base plissé, colore ripetuto come un multiplo Warhol.</p>
+                                    <span class="look-tag">Modulo F · Multicolore</span>
+                                </div>
+                                <span class="flip-hint">Scheda tecnica ⤢</span>
+                            </div>
+                            <div class="look-face look-face-back">
+                                <svg viewBox="0 0 160 200" class="spec-svg">
+                                    <rect x="30" y="30" width="30" height="30" fill="var(--red)"/>
+                                    <rect x="65" y="30" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                    <rect x="100" y="30" width="30" height="30" fill="var(--blue)"/>
+                                    <rect x="30" y="65" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                    <rect x="65" y="65" width="30" height="30" fill="var(--yellow)"/>
+                                    <rect x="100" y="65" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                    <rect x="30" y="100" width="30" height="30" fill="var(--pink)"/>
+                                    <rect x="65" y="100" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                    <rect x="100" y="100" width="30" height="30" fill="var(--black)"/>
+                                    <text x="34" y="188" class="spec-text">Griglia colore 3×3</text>
+                                </svg>
+                                <p class="spec-line">Distinta tecnica · Modulo F · Multicolore</p>
+                                <span class="flip-hint">← Torna al look</span>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- STUDIO -->
+        <section id="studio" class="section section-dark">
+            <span class="seam" aria-hidden="true"></span>
+            <span class="watermark" aria-hidden="true">STUDIO</span>
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-num">IV</span>
+                    <h2 class="section-title">Studio</h2>
+                </div>
+                <div class="studio-grid">
+                    <div class="studio-visual" aria-hidden="true">
+                        <div class="studio-square sq-1"></div>
+                        <div class="studio-square sq-2"></div>
+                        <div class="studio-square sq-3"></div>
+                        <div class="studio-circle"></div>
+                    </div>
+                    <div class="studio-text">
+                        <p class="text-manifesto">Progettiamo tessuti come si progettano edifici: pianta, sezione, prospetto.</p>
+                        <p>Lo studio nasce dall'incontro tra tre discipline che raramente si parlano: la trattatistica rinascimentale sulla proporzione, il razionalismo italiano degli anni '30 e la cultura pop che ha reso il colore un linguaggio di massa.</p>
+                        <p>Ogni collezione parte da un disegno tecnico prima che da uno schizzo: griglia, moduli, rapporti aurei. Solo dopo arriva il colore — mai casuale, sempre in blocco, mai sfumato.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="geometria" class="section-geometry">
-            <div class="perspective-grid">
-                <div class="grid-lines"></div>
-            </div>
-
-            <div class="container-golden">
-                <span class="section-number">II</span>
-                <h2>Geometria Sacra</h2>
-
-                <div class="shapes-container">
-                    <div class="shape-item" data-shape="circle">
-                        <div class="shape circle-perfect">
-                            <svg viewBox="0 0 200 200">
-                                <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="1"/>
-                                <circle cx="100" cy="100" r="2" fill="currentColor"/>
-                            </svg>
-                        </div>
-                        <h3>Cerchio</h3>
-                        <p>Perfezione infinita</p>
+        <!-- CONTATTI -->
+        <section id="contatti" class="section">
+            <span class="seam" aria-hidden="true"></span>
+            <div class="container">
+                <div class="section-head">
+                    <span class="section-num">V</span>
+                    <h2 class="section-title">Contatti</h2>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-block">
+                        <h3>Atelier</h3>
+                        <p>Via dei Moduli 16<br>Milano, Italia</p>
                     </div>
-
-                    <div class="shape-item" data-shape="square">
-                        <div class="shape square-perfect">
-                            <svg viewBox="0 0 200 200">
-                                <rect x="35" y="35" width="130" height="130" fill="none" stroke="currentColor" stroke-width="1"/>
-                                <line x1="35" y1="35" x2="165" y2="165" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                                <line x1="165" y1="35" x2="35" y2="165" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                            </svg>
-                        </div>
-                        <h3>Quadrato</h3>
-                        <p>Stabilità terrena</p>
+                    <div class="contact-block">
+                        <h3>Studio</h3>
+                        <p>studio@plisse.design<br>Su appuntamento</p>
                     </div>
-
-                    <div class="shape-item" data-shape="triangle">
-                        <div class="shape triangle-perfect">
-                            <svg viewBox="0 0 200 200">
-                                <polygon points="100,30 170,165 30,165" fill="none" stroke="currentColor" stroke-width="1"/>
-                                <line x1="100" y1="30" x2="100" y2="165" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                            </svg>
+                    <div class="contact-block">
+                        <h3>Seguici</h3>
+                        <div class="social-links">
+                            <a href="#" class="magnetic">Instagram</a>
+                            <a href="#" class="magnetic">Are.na</a>
+                            <a href="#" class="magnetic">Pinterest</a>
                         </div>
-                        <h3>Triangolo</h3>
-                        <p>Equilibrio divino</p>
-                    </div>
-
-                    <div class="shape-item" data-shape="pentagon">
-                        <div class="shape pentagon-perfect">
-                            <svg viewBox="0 0 200 200">
-                                <polygon points="100,30 175,85 145,160 55,160 25,85" fill="none" stroke="currentColor" stroke-width="1"/>
-                                <circle cx="100" cy="100" r="60" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.3"/>
-                            </svg>
-                        </div>
-                        <h3>Pentagono</h3>
-                        <p>Sezione aurea incarnata</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="opus" class="section-work">
-            <div class="container-golden">
-                <span class="section-number">III</span>
-                <h2>Opus Digitalis</h2>
-
-                <div class="work-grid">
-                    <article class="work-card">
-                        <div class="work-image">
-                            <div class="placeholder-gradient gradient-1"></div>
-                        </div>
-                        <div class="work-content">
-                            <h3>Perspectiva Artificialis</h3>
-                            <p>Rendering tridimensionale secondo i principi brunelleschiani</p>
-                            <span class="work-tag">WebGL / Three.js</span>
-                        </div>
-                    </article>
-
-                    <article class="work-card">
-                        <div class="work-image">
-                            <div class="placeholder-gradient gradient-2"></div>
-                        </div>
-                        <div class="work-content">
-                            <h3>Typographia Nova</h3>
-                            <p>Font variabili basati sui canoni rinascimentali</p>
-                            <span class="work-tag">Variable Fonts / WOFF2</span>
-                        </div>
-                    </article>
-
-                    <article class="work-card">
-                        <div class="work-image">
-                            <div class="placeholder-gradient gradient-3"></div>
-                        </div>
-                        <div class="work-content">
-                            <h3>Harmonia Mundi</h3>
-                            <p>Generative art attraverso la sezione aurea</p>
-                            <span class="work-tag">Canvas API / Algorithm</span>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-manifesto">
-            <div class="container-narrow">
-                <blockquote class="quote-large">
-                    <p>
-                        "Se l'architettura è musica congelata,
-                        allora il codice è geometria animata.
-                        Ogni pixel risponde a una ragione,
-                        ogni transizione segue un'armonia matematica."
-                    </p>
-                    <footer>— Leon Battista Alberti, 2026</footer>
-                </blockquote>
             </div>
         </section>
     </main>
 
-    <footer class="footer-minimal">
-        <div class="container-golden">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>De Architectura</h4>
-                    <p>Costruire con ragione,<br>progettare con bellezza.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Contactus</h4>
-                    <p>studio@alberti.digital<br>Firenze / Milano / Berlin</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Sequere Nos</h4>
-                    <div class="social-links">
-                        <a href="#">Github</a>
-                        <a href="#">Behance</a>
-                        <a href="#">Are.na</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>MMXXVI — Omnia Opera Sub Φ</p>
-            </div>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <p class="brand footer-brand">PLISSÉ<span class="brand-mark">°</span></p>
+            <p class="footer-line">MMXXVI — Forma, Griglia, Colore</p>
         </div>
     </footer>
 
